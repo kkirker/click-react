@@ -13,12 +13,12 @@ class App extends Component {
     friends, score:0, clicked: []
   };
 
-  // removeFriend = id => {
-  //   // Filter this.state.friends for friends with an id not equal to the id being removed
-  //   const friends = this.state.friends.filter(friend => friend.id !== id);
-  //   // Set this.state.friends equal to the new friends array
-  //   this.setState({ friends });
-  // };
+  removeFriend = id => {
+    // Filter this.state.friends for friends with an id not equal to the id being removed
+    const friends = this.state.friends.filter(friend => friend.id !== id);
+    // Set this.state.friends equal to the new friends array
+    this.setState({ friends });
+  };
   checkClick = id => {
 
     console.log(`Clicked ${id}` );
@@ -78,9 +78,11 @@ class App extends Component {
         <CardWrapper>
         {this.state.friends.map(friend => (
           <FriendCard
-            id={friend.id}
-            key={friend.id}
-            image={friend.image}
+          checkClick={this.checkClick}
+          removeFriend={this.removeFriend}
+          id={friend.id}
+          key={friend.id}
+          image={friend.image}
           />
         ))}
         </CardWrapper>
